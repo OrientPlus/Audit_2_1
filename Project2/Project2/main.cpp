@@ -78,7 +78,7 @@ void generate_RD(fstream *out)
 		v.push_back(tmp);
 	}
 	end = clock();
-	cout << endl << "Генерация завершена." << endl;
+	cout << endl << "Генерация завершена.";
 	*out << "Гистограмма random_device :" << endl;
 	gistogram(v, out);
 	*out << "Время генерации 1 000 000 чисел: " << ((double)end - start) / ((double)CLOCKS_PER_SEC) << endl;
@@ -98,7 +98,7 @@ void generate_mt19937(fstream *out)
 		v.push_back(tmp);
 	}
 	end = clock();
-	cout << endl << "Генерация завершена." << endl;
+	cout << endl << "Генерация завершена.";
 	*out << endl << "Гистограмма mt19937 :" << endl;
 	gistogram(v, out);
 	*out << endl << "Время генерации 1 000 000 чисел: " << ((double)end - start) / ((double)CLOCKS_PER_SEC) << endl;
@@ -123,7 +123,7 @@ void generate_uniform(fstream* out)
 		v.push_back(tmp);
 	}
 	end = clock();
-	cout << endl << "Генерация завершена." << endl;
+	cout << endl << "Генерация завершена.";
 	*out << endl << "Гистограмма uniform_int_distribution:" << endl;
 	gistogram(v, out);
 	*out << endl << "Время генерации 1 000 000 чисел: " << ((double)end - start) / ((double)CLOCKS_PER_SEC) << endl;
