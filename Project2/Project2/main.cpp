@@ -138,7 +138,7 @@ void generate_srand(fstream* out)
 	start = clock();
 	for (int i = 0; i < 1000000; i++)
 	{
-		tmp = rand() % 1000000;
+		tmp = rand();
 		v.push_back(tmp);
 	}
 	end = clock();
