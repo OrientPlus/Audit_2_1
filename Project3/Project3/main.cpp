@@ -34,16 +34,16 @@ int main()
 
 	for (int i = 0; i < n; i++)
 	{
-		if (FSize[i] > 100)
+		if (FSize[i]/1024 > 100)
 		{
 			way.remove_filename();
 			way = _way;
-			way /= "DIR" + i;
+			way /= "DIR";
 			create_directory(way.string());
 			fileWay.remove_filename();
 			fileWay = _way;
 			fileWay /= FName[i];
-			copy_file(fileWay.string(), way.string());
+			copy(fileWay.string(), way.string());
 		}
 		else if (tmp < 100)
 		{
@@ -53,12 +53,13 @@ int main()
 				way = _way;
 				way /= "DIR2";
 				create_directory(way.string());
+				file_point = 1;
 			}
 			fileWay.remove_filename();
 			fileWay = _way;
 			fileWay /= FName[i];
-			//copy_file(fileWay.string(), way.string());
-			tmp = tmp + FSize[i];
+			copy(fileWay.string(), way.string());
+			tmp = tmp + FSize[i]/1024;
 		}
 	}
 
