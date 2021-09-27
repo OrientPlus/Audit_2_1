@@ -1,0 +1,7 @@
+﻿  main.cpp
+C:\Users\gutro\Desktop\GIT\audit\Project3\Project3\main.cpp(23,30): warning C4244: аргумент: преобразование "uintmax_t" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+  Project3.vcxproj -> C:\Users\gutro\Desktop\GIT\audit\Project3\Debug\Project3.exe
