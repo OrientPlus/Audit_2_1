@@ -1,5 +1,5 @@
 ﻿  main.cpp
-C:\Users\gutro\Desktop\GIT\audit\Project3\Project3\main.cpp(23,30): warning C4244: аргумент: преобразование "uintmax_t" в "_Ty", возможна потеря данных
+C:\Users\gutro\Desktop\GIT\audit\Project3\Project3\main.cpp(29,30): warning C4244: аргумент: преобразование "uintmax_t" в "_Ty", возможна потеря данных
           with
           [
               _Ty=int

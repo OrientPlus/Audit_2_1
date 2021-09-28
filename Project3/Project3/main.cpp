@@ -11,12 +11,18 @@ int main()
 {
 	vector<string> FName;
 	vector<int> FSize;
-	path way = "C:\\Users\\gutro\\Desktop\\GIT\\audit\\Project3\\Project3\\dir";
-	path _way = "C:\\Users\\gutro\\Desktop\\GIT\\audit\\Project3\\Project3\\dir";
+	string DirName, sub_name;
+	path way;
+	path _way;
 	path fileWay;
-	int n = 0, file_point = 0, tmp = 0, tmpI=0;
+	int n = 0, file_point = 0, tmp = 0, I=49;
 
-	for (auto& p : directory_iterator(way)) //Получаем список файлов в директории и их размер.
+	cout << "Enter way: ";
+	cin >> DirName;
+	way = DirName;
+	_way = DirName;
+
+	for (auto& p : directory_iterator(way))
 	{
 		way = p.path();
 		FName.push_back(way.string());
@@ -25,20 +31,29 @@ int main()
 		n++;
 	}
 
-	for (int i = 0; i < n; ++i) //Выводим найденные файлы.
+	for (int i = 0; i < n; ++i) 
 	{
 		cout << FName[i] << " || SIZE ==> "<< FSize[i] /1024 << "Kb" << endl;
 	}
 
-	way.clear();
-
+	way.remove_filename();
+	
 	for (int i = 0; i < n; i++)
 	{
+		if (tmp >= 100 || FSize[i] / 1024 + tmp > 100)
+		{
+			file_point = 0;
+			tmp = 0;
+		}
 		if (FSize[i]/1024 > 100)
 		{
 			way.remove_filename();
 			way = _way;
-			way /= "DIR";
+			DirName = "DIR";
+			sub_name = I++;
+			DirName = DirName + sub_name;
+			way /= DirName;
+			
 			create_directory(way.string());
 			fileWay.remove_filename();
 			fileWay = _way;
@@ -51,7 +66,10 @@ int main()
 			{
 				way.remove_filename();
 				way = _way;
-				way /= "DIR2";
+				DirName = "DIR";
+				sub_name = I++;
+				DirName = DirName + sub_name;
+				way /= DirName;
 				create_directory(way.string());
 				file_point = 1;
 			}
@@ -62,40 +80,6 @@ int main()
 			tmp = tmp + FSize[i]/1024;
 		}
 	}
-
-
-	//for (int j = 0; j < i; ++j) //Пробегаем по всем найденным файлам в директории
-	//{
-	//	if (FSize[j] >= 100) //Если файл больше 100Кб, создаем директорию и копируем в нее файл
-	//	{
-	//		way /= "DIRECTORY";
-	//		if (!create_directory(way.string())) //Вывести сообщение об ошибке, если не удалось создать директорию
-	//		{
-	//			cout << endl << "ERROR! DIRECTORY WAS NOT CREATED!" << endl;
-	//			system("pause");
-	//			exit(0);
-	//		}
-	//		for (auto& q : directory_iterator(way))//Получаем имя созданной директории и копируем в нее файл
-	//		{                                      //т.к директории скорее всего создаются с одинаковым именем, они будут расположены 
-	//			way = q.path();                    //последовательно по мере создания (Дир1, Дир2, ...) соответсвенно можем получать их имена в цикле
-	//			if (point == j)
-	//				break;
-	//			point++;
-	//			way.remove_filename();
-	//		}
-	//		point = 0;
-	//		copy_file(FName[j], way);
-	//	}
-	//	else {
-	//		tmp = tmp + FSize[j];
-	//		tmpI++;
-	//	}
-	//	if (tmp >= 100)
-	//	{
-	//		way /= "DIREC";
-	//		create_directory(way.string());
-	//	}
-	//}
 
 	system("pause");
 	return 0;
